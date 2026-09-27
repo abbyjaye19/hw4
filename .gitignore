@@ -1,0 +1,27 @@
+# Data pack — do not commit the database or product images
+data/
+data.zip
+*.db
+*.sqlite
+*.sqlite3
+products/
+
+# Secrets (the real .env is never committed; .env.example has placeholders only)
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+
+# Local scratch / editor
+.claude/
+*.log

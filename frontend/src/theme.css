@@ -1,0 +1,778 @@
+/* ==========================================================================
+   Campus Customs — design layer (Problem 10)
+   Navy · white · light blue, with mixed silver-and-gold metallic accents.
+   Loaded after index.css; overrides colors/typography and styles new pieces.
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --navy-900: #071b33;
+  --navy: #0b2a4f;
+  --navy-700: #16406f;
+  --sky: #a9c7e8;
+  --sky-200: #cfe0f3;
+  --sky-100: #e8f1fa;
+  --sky-50: #f5f9fd;
+  --silver: #c4cad2;
+  --silver-light: #eef1f4;
+  --gold: #c9a227;
+  --gold-light: #f2dfa0;
+  --slate: #54708f;
+
+  /* Silver → gold → silver, used for thin accents only */
+  --metal: linear-gradient(120deg, #aeb6c0 0%, #eef1f4 22%, #c9a227 52%, #f2dfa0 70%, #c4cad2 100%);
+  --metal-soft: linear-gradient(120deg, #d7dce2 0%, #f6f7f9 30%, #e7cf85 60%, #f7ecc8 80%, #dfe3e8 100%);
+
+  /* Map the base tokens from index.css onto the new palette */
+  --blue: var(--navy);
+  --blue-dark: var(--navy-900);
+  --blue-light: #5b8fc7;
+  --gold-dark: #8f7420;
+  --bg: var(--sky-50);
+  --border: #dbe5f0;
+  --muted: #5c6b7c;
+  --shadow: 0 2px 12px rgba(7, 27, 51, 0.07);
+
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.brand-text strong,
+.chat-results-title {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+
+h4 {
+  color: var(--slate);
+}
+
+.eyebrow {
+  color: var(--slate);
+  letter-spacing: 0.14em;
+}
+
+/* Shimmering silver-gold text for small accents */
+.eyebrow-metal,
+.metal-text {
+  background: var(--metal-soft);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Announcement + navbar ---------- */
+.announcement {
+  background: var(--navy-900);
+  color: var(--silver-light);
+  letter-spacing: 0.08em;
+  font-size: 0.76rem;
+  position: relative;
+}
+
+.announcement::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--metal);
+}
+
+.navbar {
+  padding: 0.7rem 2.5rem;
+  box-shadow: 0 1px 0 var(--border), 0 6px 20px rgba(7, 27, 51, 0.05);
+}
+
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  padding: 2px;
+  border-radius: 50%;
+  background: var(--metal);
+  overflow: hidden;
+}
+
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+  background: var(--sky-100);
+  border-radius: 50%;
+  padding: 3px 2px 0;
+}
+
+.brand-text strong {
+  font-size: 1.3rem;
+}
+
+.brand-text small {
+  color: var(--slate);
+  letter-spacing: 0.18em;
+}
+
+.nav-links {
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.navbar .nav-links a {
+  position: relative;
+  padding: 0.5rem 0.95rem !important;
+  border-radius: 999px;
+  border-bottom: none !important;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--navy) !important;
+  transition: background 0.15s;
+}
+
+.navbar .nav-links a:hover {
+  background: var(--sky-100);
+}
+
+.navbar .nav-links a.active {
+  background: var(--sky-100);
+}
+
+/* Metallic underline marks the page you're on */
+.navbar .nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--metal);
+}
+
+.nav-account a:not(.btn) {
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  background: var(--navy);
+  border-color: var(--navy);
+  letter-spacing: 0.01em;
+}
+
+/* Keep the outlined "Log out" button readable (the navy .btn background above would hide its text) */
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--navy);
+  color: #fff;
+}
+
+.btn-metal {
+  background: var(--metal);
+  border: none;
+  color: var(--navy-900);
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.25);
+}
+
+.btn-metal:hover:not(:disabled) {
+  background: var(--metal);
+  filter: brightness(1.06);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 2.5rem 4rem;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(169, 199, 232, 0.25), transparent 45%),
+    radial-gradient(circle at 10% 110%, rgba(169, 199, 232, 0.18), transparent 40%),
+    linear-gradient(135deg, var(--navy-900), var(--navy) 55%, var(--navy-700));
+}
+
+/* Faint shoreline waves across the bottom of the hero */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  background: var(--sky-50);
+  -webkit-mask: radial-gradient(40px 22px at 50% 100%, #000 98%, transparent) repeat-x;
+  mask: radial-gradient(40px 22px at 50% 100%, #000 98%, transparent) repeat-x;
+  -webkit-mask-size: 80px 40px;
+  mask-size: 80px 40px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+  color: #fff;
+  margin: 0.35rem 0 0.9rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  background: var(--metal-soft);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--sky-200);
+  opacity: 1;
+}
+
+.hero-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+}
+
+.hero-medallion {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--metal);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.hero-medallion svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #ffffff, var(--sky-100) 60%, var(--sky-200));
+  padding: 24px 22px 0;
+}
+
+.float {
+  position: absolute;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+  animation: drift 7s ease-in-out infinite;
+}
+
+.leaf-1 {
+  top: 8%;
+  left: 8%;
+  transform: rotate(-20deg);
+}
+
+.leaf-2 {
+  bottom: 14%;
+  right: 6%;
+  animation-delay: -2.5s;
+}
+
+.pizza-1 {
+  top: 12%;
+  right: 10%;
+  animation-delay: -4s;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -8deg;
+  }
+  50% {
+    translate: 0 -10px;
+    rotate: 8deg;
+  }
+}
+
+/* ---------- Page headers (Products, About, etc.) ---------- */
+.page-head {
+  position: relative;
+  padding: 1.4rem 1.6rem 1.3rem 1.9rem;
+  background: linear-gradient(180deg, #fff, var(--sky-100));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.page-head::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--metal);
+}
+
+.page-head h1 {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  margin-bottom: 0.25rem;
+}
+
+/* ---------- Section titles ---------- */
+.section-title,
+.section-head h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.35rem;
+}
+
+.section-title::after,
+.section-head h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--metal);
+}
+
+/* ---------- Quick shop + collections + local notes ---------- */
+.quick-shop-link {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--navy);
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+.quick-shop-link:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.collection {
+  border-top: none;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.collection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--navy);
+  transition: background 0.2s;
+}
+
+.collection:hover::before {
+  background: var(--metal);
+}
+
+.local-notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.local-note {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  background: var(--sky-100);
+  border: 1px solid var(--sky-200);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.local-note:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.local-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#fff, #fff), var(--metal);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.local-note strong {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+
+.local-note small {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* ---------- Product cards ---------- */
+.product-card {
+  border-color: var(--border);
+  border-radius: 14px;
+}
+
+.product-card:hover {
+  box-shadow: 0 10px 28px rgba(7, 27, 51, 0.12);
+  border-color: var(--sky);
+}
+
+.product-card-body {
+  border-top-color: var(--sky-100);
+}
+
+.product-card-body h3 {
+  font-size: 1.05rem;
+}
+
+.price {
+  color: var(--navy);
+}
+
+.card-reason {
+  color: var(--navy-700) !important;
+}
+
+.pill {
+  border-color: var(--border);
+  font-weight: 600;
+}
+
+.pill.active,
+.pill:hover,
+.size-chip.active {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.filters-secondary {
+  border-radius: 14px;
+}
+
+/* ---------- Product detail ---------- */
+.product-detail-img {
+  border-radius: 16px;
+  border: 2px solid transparent;
+  background-image: linear-gradient(#fff, #fff), var(--metal-soft);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.chip {
+  background: var(--sky-100);
+  color: var(--navy);
+}
+
+.size.active,
+.size:hover:not(:disabled) {
+  border-color: var(--navy);
+  background: var(--sky-100);
+}
+
+/* ---------- Chat results panel ---------- */
+.chat-results {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: none;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-results::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--metal);
+}
+
+/* ---------- Auth ---------- */
+.auth-card {
+  border-top: none;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: var(--metal);
+}
+
+/* ---------- Floating chat: calm, on-theme, easy to find ---------- */
+.chat {
+  right: 1.25rem;
+  bottom: 1.25rem;
+}
+
+.chat-toggle {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem 0.4rem 0.4rem;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background-image: linear-gradient(var(--navy), var(--navy)), var(--metal);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(7, 27, 51, 0.22);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.chat-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(7, 27, 51, 0.28);
+}
+
+.chat-toggle.is-open {
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+}
+
+.chat-toggle-close {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.chat-toggle-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+}
+
+.chat-toggle-label strong {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1rem;
+}
+
+.chat-toggle-label small {
+  font-size: 0.7rem;
+  color: var(--sky-200);
+}
+
+.chat-avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--sky-100);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.chat-avatar svg {
+  margin-top: 4px;
+}
+
+.chat-panel {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 18px 44px rgba(7, 27, 51, 0.2);
+}
+
+.chat-header {
+  background: var(--navy);
+  border-bottom: none;
+  position: relative;
+  padding: 0.75rem 0.9rem;
+}
+
+.chat-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--metal);
+}
+
+.chat-title {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.chat-title > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-title strong {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.chat-header small {
+  color: var(--sky-200);
+  opacity: 1;
+}
+
+.chat-messages {
+  background: var(--sky-50);
+}
+
+.bubble {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.bubble-assistant {
+  background: #fff;
+  border-color: var(--border);
+}
+
+.bubble-user {
+  background: var(--navy);
+}
+
+.thinking span {
+  background: var(--slate);
+}
+
+.chat-input {
+  background: #fff;
+}
+
+.chat-input .btn {
+  background: var(--navy);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: transparent;
+  padding: 0;
+  margin-top: 3rem;
+}
+
+.footer-wave {
+  display: block;
+  width: 100%;
+  height: 48px;
+}
+
+.footer-body {
+  background: var(--navy);
+  color: var(--sky-200);
+  padding: 1.5rem 2.5rem 1.5rem;
+}
+
+.footer h4 {
+  background: var(--metal-soft);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.12em;
+}
+
+.footer-brand {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.footer-brand svg {
+  flex-shrink: 0;
+  background: var(--sky-100);
+  border-radius: 50%;
+  padding: 4px 3px 0;
+  border: 2px solid var(--silver);
+}
+
+.footer-local {
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(169, 199, 232, 0.2);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-note {
+  margin-top: 0.8rem;
+}
+
+/* ---------- 404 ---------- */
+.not-found {
+  text-align: center;
+  padding-top: 3rem;
+}
+
+/* ---------- Responsive + motion ---------- */
+@media (max-width: 820px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-art {
+    min-height: 220px;
+  }
+  .hero-medallion {
+    width: 200px;
+    height: 200px;
+  }
+  .navbar {
+    padding: 0.7rem 1rem;
+  }
+  .nav-links {
+    justify-content: flex-start;
+  }
+  .chat-toggle-label small {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float {
+    animation: none;
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "captured_at": "2026-09-27 10:32",
+  "logged_in_as": "test@campuscustoms.yale.edu",
+  "check1": {
+    "question": "How much is the Crew Left Chest Hoodie, and how many do you have in medium and in XL?",
+    "reply": "Sorry, the Crew Left Chest Hoodie is sold out in medium. It\u2019s $68.00; XL is in stock with 20 available. Other available sizes are XS (20), S (12), L (8), and XXL (5). I\u2019ve also added three similar navy hoodies available in medium below.",
+    "page": "/products/crew-left-chest-hoodie"
+  },
+  "check2": {
+    "question": "What hoodies do you have?",
+    "reply": "We have 27 hoodies, from $45 to $88. Here are 12 to start, including classic Yale, Champion, vintage Bulldog, and sport styles; you can narrow them by color, sport, or size.",
+    "page": "/about",
+    "panel_heading": "FROM YOUR CHAT Yale hoodies \u00b7 Showing 12 of 27 Collapse Clear",
+    "card_count": 12,
+    "cards": [
+      {
+        "name": "Basic Hoodie Big Yale",
+        "price": "$68.00",
+        "href": "/products/basic-hoodie-big-yale"
+      },
+      {
+        "name": "Brooks Brothers Double Knit Full Zip Hoodie Yale",
+        "price": "$88.00",
+        "href": "/products/brooks-brothers-double-knit-full-zip-hoodie-yale"
+      },
+      {
+        "name": "Champion Full Zip Hood",
+        "price": "$88.00",
+        "href": "/products/champion-full-zip-hood"
+      },
+      {
+        "name": "Champion Reverse Weave Hoodie 1",
+        "price": "$68.00",
+        "href": "/products/champion-reverse-weave-hoodie-1"
+      },
+      {
+        "name": "Crew Left Chest Hoodie",
+        "price": "$68.00",
+        "href": "/products/crew-left-chest-hoodie"
+      },
+      {
+        "name": "District Vit Hoodie Vintage Bulldog",
+        "price": "$68.00",
+        "href": "/products/district-vit-hoodie-vintage-bulldog"
+      },
+      {
+        "name": "District Vit Hoodie Vintage Sailor Bulldog",
+        "price": "$68.00",
+        "href": "/products/district-vit-hoodie-vintage-sailor-bulldog"
+      },
+      {
+        "name": "Fencing Left Chest Hoodie",
+        "price": "$68.00",
+        "href": "/products/fencing-left-chest-hoodie"
+      },
+      {
+        "name": "Ice Hockey Left Chest Hoodie",
+        "price": "$68.00",
+        "href": "/products/ice-hockey-left-chest-hoodie"
+      },
+      {
+        "name": "Sailing Left Chest Hoodie",
+        "price": "$68.00",
+        "href": "/products/sailing-left-chest-hoodie"
+      },
+      {
+        "name": "Squash Left Chest Hoodie",
+        "price": "$68.00",
+        "href": "/products/squash-left-chest-hoodie"
+      },
+      {
+        "name": "The Forest School Hoodie",
+        "price": "$68.00",
+        "href": "/products/the-forest-school-hoodie"
+      }
+    ],
+    "opened_detail": {
+      "url": "/products/champion-full-zip-hood",
+      "title": "Champion Full Zip Hood",
+      "back": "\u2190 Back to chat results (Yale hoodies)"
+    }
+  },
+  "check3": {
+    "url": "/products?type=hood&size=M&sort=price-asc",
+    "result_line": "21\nitems in stock in M\n\u00b7 6 more sold out in M",
+    "shown": [
+      {
+        "id": "ua-gameday-double-knit-hood",
+        "name": "Ua Gameday Double Knit Hood",
+        "price": "$45.00",
+        "stock_line": "8 left in M"
+      },
+      {
+        "id": "yale-sports-hoodie-tennis",
+        "name": "Yale Sports Hoodie Tennis",
+        "price": "$45.00",
+        "stock_line": "25 left in M"
+      },
+      {
+        "id": "basic-hoodie-big-yale",
+        "name": "Basic Hoodie Big Yale",
+        "price": "$68.00",
+        "stock_line": "5 left in M"
+      },
+      {
+        "id": "champion-reverse-weave-hoodie-1",
+        "name": "Champion Reverse Weave Hoodie 1",
+        "price": "$68.00",
+        "stock_line": "20 left in M"
+      },
+      {
+        "id": "district-vit-hoodie-vintage-bulldog",
+        "name": "District Vit Hoodie Vintage Bulldog",
+        "price": "$68.00",
+        "stock_line": "15 left in M"
+      },
+      {
+        "id": "district-vit-hoodie-vintage-sailor-bulldog",
+        "name": "District Vit Hoodie Vintage Sailor Bulldog",
+        "price": "$68.00",
+        "stock_line": "8 left in M"
+      },
+      {
+        "id": "fencing-left-chest-hoodie",
+        "name": "Fencing Left Chest Hoodie",
+        "price": "$68.00",
+        "stock_line": "15 left in M"
+      },
+      {
+        "id": "sailing-left-chest-hoodie",
+        "name": "Sailing Left Chest Hoodie",
+        "price": "$68.00",
+        "stock_line": "25 left in M"
+      },
+      {
+        "id": "squash-left-chest-hoodie",
+        "name": "Squash Left Chest Hoodie",
+        "price": "$68.00",
+        "stock_line": "5 left in M"
+      },
+      {
+        "id": "volleyball-left-chest-hoodie",
+        "name": "Volleyball Left Chest Hoodie",
+        "price": "$68.00",
+        "stock_line": "2 left in M"
+      },
+      {
+        "id": "yale-aunt-hoodie",
+        "name": "Yale Aunt Hoodie",
+        "price": "$68.00",
+        "stock_line": "12 left in M"
+      },
+      {
+        "id": "yale-dad-hoodie",
+        "name": "Yale Dad Hoodie",
+        "price": "$68.00",
+        "stock_line": "12 left in M"
+      },
+      {
+        "id": "yale-grandpa-hoodie",
+        "name": "Yale Grandpa Hoodie",
+        "price": "$68.00",
+        "stock_line": "25 left in M"
+      },
+      {
+        "id": "yale-mom-hoodie",
+        "name": "Yale Mom Hoodie",
+        "price": "$68.00",
+        "stock_line": "8 left in M"
+      },
+      {
+        "id": "yale-sports-hoodie-baseball",
+        "name": "Yale Sports Hoodie Baseball",
+        "price": "$68.00",
+        "stock_line": "5 left in M"
+      },
+      {
+        "id": "yale-sports-hoodie-diving",
+        "name": "Yale Sports Hoodie Diving",
+        "price": "$68.00",
+        "stock_line": "2 left in M"
+      },
+      {
+        "id": "yale-sports-hoodie-golf",
+        "name": "Yale Sports Hoodie Golf",
+        "price": "$68.00",
+        "stock_line": "8 left in M"
+      },
+      {
+        "id": "yale-sports-hoodie-hockey",
+        "name": "Yale Sports Hoodie Hockey",
+        "price": "$68.00",
+        "stock_line": "5 left in M"
+      },
+      {
+        "id": "yale-uncle-hoodie",
+        "name": "Yale Uncle Hoodie",
+        "price": "$68.00",
+        "stock_line": "8 left in M"
+      },
+      {
+        "id": "brooks-brothers-double-knit-full-zip-hoodie-yale",
+        "name": "Brooks Brothers Double Knit Full Zip Hoodie Yale",
+        "price": "$88.00",
+        "stock_line": "8 left in M"
+      },
+      {
+        "id": "champion-full-zip-hood",
+        "name": "Champion Full Zip Hood",
+        "price": "$88.00",
+        "stock_line": "5 left in M"
+      }
+    ],
+    "back_nav": {
+      "scroll_before": 1100,
+      "opened": "Squash Left Chest Hoodie",
+      "back_button": "\u2190 Back to Hoodies",
+      "breadcrumbs": "Home \u203a Products \u203a Hoodies \u203a Squash Left Chest Hoodie",
+      "returned_url": "/products?type=hood&size=M&sort=price-asc",
+      "scroll_after": 1100
+    }
+  },
+  "db_crew": {
+    "name": "Crew Left Chest Hoodie",
+    "price": 68.0,
+    "inventory": {
+      "L": 8,
+      "M": 0,
+      "S": 12,
+      "XL": 20,
+      "XS": 20,
+      "XXL": 5
+    }
+  },
+  "db_filter": {
+    "basic-hoodie-big-yale": {
+      "price": 68.0,
+      "m_qty": 5
+    },
+    "brooks-brothers-double-knit-full-zip-hoodie-yale": {
+      "price": 88.0,
+      "m_qty": 8
+    },
+    "champion-full-zip-hood": {
+      "price": 88.0,
+      "m_qty": 5
+    },
+    "champion-reverse-weave-hoodie-1": {
+      "price": 68.0,
+      "m_qty": 20
+    },
+    "district-vit-hoodie-vintage-bulldog": {
+      "price": 68.0,
+      "m_qty": 15
+    },
+    "district-vit-hoodie-vintage-sailor-bulldog": {
+      "price": 68.0,
+      "m_qty": 8
+    },
+    "fencing-left-chest-hoodie": {
+      "price": 68.0,
+      "m_qty": 15
+    },
+    "sailing-left-chest-hoodie": {
+      "price": 68.0,
+      "m_qty": 25
+    },
+    "squash-left-chest-hoodie": {
+      "price": 68.0,
+      "m_qty": 5
+    },
+    "ua-gameday-double-knit-hood": {
+      "price": 45.0,
+      "m_qty": 8
+    },
+    "volleyball-left-chest-hoodie": {
+      "price": 68.0,
+      "m_qty": 2
+    },
+    "yale-aunt-hoodie": {
+      "price": 68.0,
+      "m_qty": 12
+    },
+    "yale-dad-hoodie": {
+      "price": 68.0,
+      "m_qty": 12
+    },
+    "yale-grandpa-hoodie": {
+      "price": 68.0,
+      "m_qty": 25
+    },
+    "yale-mom-hoodie": {
+      "price": 68.0,
+      "m_qty": 8
+    },
+    "yale-sports-hoodie-baseball": {
+      "price": 68.0,
+      "m_qty": 5
+    },
+    "yale-sports-hoodie-diving": {
+      "price": 68.0,
+      "m_qty": 2
+    },
+    "yale-sports-hoodie-golf": {
+      "price": 68.0,
+      "m_qty": 8
+    },
+    "yale-sports-hoodie-hockey": {
+      "price": 68.0,
+      "m_qty": 5
+    },
+    "yale-sports-hoodie-tennis": {
+      "price": 45.0,
+      "m_qty": 25
+    },
+    "yale-uncle-hoodie": {
+      "price": 68.0,
+      "m_qty": 8
+    }
+  },
+  "db_hoodie_count": 27,
+  "db_saved_chat": [
+    {
+      "id": 41,
+      "role": "user",
+      "c": "How much is the Crew Left Chest Hoodie, and how many do you have in medium and i",
+      "created_at": "2026-09-27 14:33:12"
+    },
+    {
+      "id": 42,
+      "role": "assistant",
+      "c": "Sorry, the Crew Left Chest Hoodie is sold out in medium. It\u2019s $68.00; XL is in s",
+      "created_at": "2026-09-27 14:33:12"
+    },
+    {
+      "id": 43,
+      "role": "user",
+      "c": "What hoodies do you have?",
+      "created_at": "2026-09-27 14:33:21"
+    },
+    {
+      "id": 44,
+      "role": "assistant",
+      "c": "We have 27 hoodies, from $45 to $88. Here are 12 to start, including classic Yal",
+      "created_at": "2026-09-27 14:33:21"
+    }
+  ]
+}

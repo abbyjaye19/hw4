@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Campus Customs — Live App Check (Problem 11)</title>
+<style>
+  :root { --navy:#0b2a4f; --sky:#e8f1fa; --border:#dbe5f0; --muted:#5c6b7c; --ok:#1f7a3f;
+          --metal:linear-gradient(120deg,#aeb6c0 0%,#eef1f4 22%,#c9a227 52%,#f2dfa0 70%,#c4cad2 100%); }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Segoe UI',system-ui,-apple-system,sans-serif; color:#1c2330; background:#f5f9fd; line-height:1.55; }
+  header { background:var(--navy); color:#fff; padding:2rem 2.5rem 1.6rem; position:relative; }
+  header::after { content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--metal); }
+  header h1 { margin:0 0 .3rem; font-family:Georgia,serif; font-size:2rem; }
+  header p { margin:0; color:#cfe0f3; }
+  main { max-width:1180px; margin:0 auto; padding:1.5rem 2rem 3rem; }
+  nav.toc { background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem 1.4rem; margin-bottom:1.5rem; }
+  nav.toc a { color:var(--navy); font-weight:600; }
+  section.check { background:#fff; border:1px solid var(--border); border-radius:14px; padding:1.5rem 1.8rem; margin-bottom:2rem; }
+  section.check h2 { font-family:Georgia,serif; color:var(--navy); margin:0 0 .2rem; font-size:1.55rem; }
+  .pass { display:inline-block; background:#e6f4ea; color:var(--ok); font-weight:700; font-size:.8rem; padding:.15rem .6rem; border-radius:999px; margin-left:.5rem; vertical-align:middle; }
+  .how { color:var(--muted); margin:.2rem 0 1rem; }
+  figure { margin:1.2rem 0; }
+  figure img { width:100%; border:1px solid var(--border); border-radius:10px; box-shadow:0 4px 16px rgba(7,27,51,.08); }
+  figcaption { margin-top:.55rem; padding:.7rem 1rem; background:var(--sky); border-left:4px solid var(--navy); border-radius:6px; }
+  figcaption strong { color:var(--navy); }
+  .quote { background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:.7rem 1rem; margin:.6rem 0; }
+  .quote b { color:var(--navy); }
+  table { border-collapse:collapse; margin:.6rem 0 0; font-size:.92rem; }
+  th, td { border:1px solid var(--border); padding:.35rem .7rem; text-align:left; }
+  th { background:var(--sky); color:var(--navy); }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  @media (max-width:900px) { .two { grid-template-columns:1fr; } }
+  code { background:#eef2f7; color:#0b2a4f; padding:.05rem .35rem; border-radius:4px; }
+  header code { background:rgba(255,255,255,.14); color:#fff; }
+  footer { text-align:center; color:var(--muted); font-size:.85rem; padding-bottom:2rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Campus Customs — Live App Check</h1>
+  <p>Problem 11 · Tested on the running site (React + Vite on <code>localhost:5173</code>, FastAPI + PydanticAI on <code>localhost:8000</code>) · 2026-09-27 10:32 · logged in as <code>test@campuscustoms.yale.edu</code></p>
+</header>
+<main>
+  <nav class="toc">
+    <strong>Checks:</strong>
+    <a href="#check1">1. Chat checks inventory (honest price &amp; stock)</a> ·
+    <a href="#check2">2. Dynamic search-result cards</a> ·
+    <a href="#check3">3. Problem 9 usability: size filter, sort &amp; back navigation</a>
+  </nav>
+
+  <section class="check" id="check1">
+    <h2>Check 1 — Chat checks an item's inventory level <span class="pass">PASS</span></h2>
+    <p class="how">On the Crew Left Chest Hoodie product page, the shopper asked the chat about price and stock in two sizes.</p>
+    <div class="quote"><b>Shopper:</b> How much is the Crew Left Chest Hoodie, and how many do you have in medium and in XL?<br><b>Assistant:</b> Sorry, the Crew Left Chest Hoodie is sold out in medium. It’s $68.00; XL is in stock with 20 available. Other available sizes are XS (20), S (12), L (8), and XXL (5). I’ve also added three similar navy hoodies available in medium below.</div>
+    <figure>
+      <img src="app_check_images/inventory.png" alt="Chat answering price and stock for the Crew Left Chest Hoodie" />
+      <figcaption><strong>What this proves:</strong> the assistant gave the exact database price ($68.00) and per-size stock, said plainly that <b>medium is sold out (0)</b> and that XL has 20, and then showed in-stock alternatives as cards. Every number matches the <code>catalogue</code> and <code>inventory</code> tables below, so nothing was invented.</figcaption>
+    </figure>
+    <div class="two">
+      <div>
+        <strong>Database: <code>inventory</code> for <code>crew-left-chest-hoodie</code></strong> (price in <code>catalogue</code>: $68.00)
+        <table><tr><th>Size</th><th>Quantity</th><th>Status</th></tr><tr><td>XS</td><td>20</td><td>In stock</td></tr><tr><td>S</td><td>12</td><td>In stock</td></tr><tr><td>M</td><td>0</td><td>Sold out</td></tr><tr><td>L</td><td>8</td><td>In stock</td></tr><tr><td>XL</td><td>20</td><td>In stock</td></tr><tr><td>XXL</td><td>5</td><td>In stock</td></tr></table>
+      </div>
+      <div>
+        <strong>Database: the chat was saved to <code>chat_messages</code></strong> (logged-in user id 1)
+        <table><tr><th>id</th><th>role</th><th>content</th><th>created_at</th></tr><tr><td>41</td><td>user</td><td>How much is the Crew Left Chest Hoodie, and how many do you have in medium and i…</td><td>2026-09-27 14:33:12</td></tr><tr><td>42</td><td>assistant</td><td>Sorry, the Crew Left Chest Hoodie is sold out in medium. It’s $68.00; XL is in s…</td><td>2026-09-27 14:33:12</td></tr><tr><td>43</td><td>user</td><td>What hoodies do you have?…</td><td>2026-09-27 14:33:21</td></tr><tr><td>44</td><td>assistant</td><td>We have 27 hoodies, from $45 to $88. Here are 12 to start, including classic Yal…</td><td>2026-09-27 14:33:21</td></tr></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="check" id="check2">
+    <h2>Check 2 — Search-result cards appear after a category question <span class="pass">PASS</span></h2>
+    <p class="how">On the About us page, the shopper asked a category question. The agent searched the catalogue and returned structured product matches, and the website rendered them as product cards.</p>
+    <div class="quote"><b>Shopper:</b> What hoodies do you have?<br><b>Assistant:</b> We have 27 hoodies, from $45 to $88. Here are 12 to start, including classic Yale, Champion, vintage Bulldog, and sport styles; you can narrow them by color, sport, or size.</div>
+    <figure>
+      <img src="app_check_images/search_cards_chat.png" alt="Chat reply and the 'Yale hoodies' product cards panel" />
+      <figcaption><strong>What this proves:</strong> after the question, a <b>"Yale hoodies · Showing 12 of 27"</b> panel appeared on the page with 12 product cards (image, name, price, short reason, sizes in stock). The count of 27 matches the database (27 hoodies in <code>catalogue</code>), and the price range $45–$88 covers all of them.</figcaption>
+    </figure>
+    <div class="two">
+      <figure>
+        <img src="app_check_images/search_cards_grid.png" alt="Full grid of chat result cards" />
+        <figcaption><strong>Chat closed, cards stay on the page.</strong> The first cards: <ul style="margin:.3rem 0 0"><li>Basic Hoodie Big Yale — $68.00</li><li>Brooks Brothers Double Knit Full Zip Hoodie Yale — $88.00</li><li>Champion Full Zip Hood — $88.00</li><li>Champion Reverse Weave Hoodie 1 — $68.00</li></ul></figcaption>
+      </figure>
+      <figure>
+        <img src="app_check_images/search_card_detail.png" alt="Single-item page opened from a chat card" />
+        <figcaption><strong>Chat cards open the single-item page.</strong> Clicking the 3rd card opened <code>/products/champion-full-zip-hood</code> (Champion Full Zip Hood), with the large image, full description, price, and stock per size, plus a <b>"← Back to chat results (Yale hoodies)"</b> button.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="check" id="check3">
+    <h2>Check 3 — Problem 9 usability: "in stock in my size" filter, sort &amp; back navigation <span class="pass">PASS</span></h2>
+    <p class="how">On the Products page the shopper chose <b>Hoodies</b>, size <b>M</b>, and <b>Price: low to high</b> (URL <code>/products?type=hood&amp;size=M&amp;sort=price-asc</code>). They then opened an item and came back.</p>
+    <figure>
+      <img src="app_check_images/usability_size_filter.png" alt="Products page filtered to hoodies in stock in M, sorted by price" />
+      <figcaption><strong>What this proves:</strong> the size filter and sort work. The page reads <b>"21 items in stock in M · 6 more sold out in M"</b>, cards are sorted from $45 upward, and each card shows the stock in M ("8 left in M"). All 21 cards shown were checked against the database: every one really has M in stock and the right price (sample below).</figcaption>
+    </figure>
+    <table><tr><th>Card (first 6)</th><th>Card price</th><th>Card stock line</th><th>DB price</th><th>DB qty in M</th></tr><tr><td>Ua Gameday Double Knit Hood</td><td>$45.00</td><td>8 left in M</td><td>$45.00</td><td>8</td></tr><tr><td>Yale Sports Hoodie Tennis</td><td>$45.00</td><td>25 left in M</td><td>$45.00</td><td>25</td></tr><tr><td>Basic Hoodie Big Yale</td><td>$68.00</td><td>5 left in M</td><td>$68.00</td><td>5</td></tr><tr><td>Champion Reverse Weave Hoodie 1</td><td>$68.00</td><td>20 left in M</td><td>$68.00</td><td>20</td></tr><tr><td>District Vit Hoodie Vintage Bulldog</td><td>$68.00</td><td>15 left in M</td><td>$68.00</td><td>15</td></tr><tr><td>District Vit Hoodie Vintage Sailor Bulldog</td><td>$68.00</td><td>8 left in M</td><td>$68.00</td><td>8</td></tr></table>
+    <div class="two" style="margin-top:1.2rem">
+      <figure>
+        <img src="app_check_images/usability_back_nav.png" alt="Product page with Back to Hoodies button and breadcrumbs" />
+        <figcaption><strong>Back navigation:</strong> after scrolling to 1100px and opening <i>Squash Left Chest Hoodie</i>, the product page shows <b>"← Back to Hoodies"</b> and breadcrumbs <b>Home › Products › Hoodies › Squash Left Chest Hoodie</b>.</figcaption>
+      </figure>
+      <figure>
+        <img src="app_check_images/usability_back_returned.png" alt="Returned to the same filtered list and scroll position" />
+        <figcaption><strong>One click back to the same spot:</strong> the Back button returned to <code>/products?type=hood&amp;size=M&amp;sort=price-asc</code> with the size filter and sort still applied, at scroll position <b>1100px</b> (same as before), so the shopper doesn't lose their place.</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+<footer>Screenshots were captured automatically from the live site in Microsoft Edge (1366×900). Database values were read directly from <code>data/campus_customs.db</code> right after the run.</footer>
+</body>
+</html>
